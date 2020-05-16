@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div>
+<h2> Here is the list of item: </h2>
+
+    {% for item in items %}
+
+        {{ item.title }}
+        {{ item.price }}
+
+    {% endfor %}
+</div>
+{% endblock %}
