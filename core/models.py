@@ -24,6 +24,7 @@ class Item(models.Model):
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
     description = models.TextField()
+    image = models.ImageField(upload_to='media/items', default='media/news/Camping.jpg')
 
     def __str__(self):
         return self.title

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Item, OrderItem, Order, BillingAddress
-from django.views.generic import ListView, DetailView, View
+from django.views.generic import ListView, DetailView, View, TemplateView
 from django.utils import timezone
 from .forms import CheckoutForm
 
@@ -184,10 +184,19 @@ class SalesListView(ListView):
     context_object_name = 'object'
 
     def get_queryset(self):
-        return Item.objects.filter(discount_price > 0)
+        """
+        :return: items that is on sales
+        """
+        items = Item.objects.exclude(discount_price__isnull=True)
+        return items
 
     def get_context_data(self, *args, object_list=None, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-
         return context
 
+
+class FaqView(TemplateView):
+    """
+    This is a class that will represent a page with FAQ
+    """
+    template_name = 'core/FAQ.html'
