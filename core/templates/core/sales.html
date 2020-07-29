@@ -1,0 +1,7 @@
+{% extends 'core/base.html' %}
+
+{% blcok content %}
+    {% for object in object_list %}
+    {{object.title}}
+    {% endfor %}
+{% endblock %}

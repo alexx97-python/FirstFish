@@ -7,7 +7,7 @@ class News(models.Model):
     title = models.CharField(max_length=300, blank=False, null=False, verbose_name='Title', )
     content = models.TextField(blank=False, verbose_name="Main Content")
     published = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='news/', default='null')
+    image = models.ImageField(upload_to='media/news/', default='null')
     rubric = models.ForeignKey('Rubric', on_delete=models.CASCADE)
 
     class Meta:

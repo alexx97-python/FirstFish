@@ -175,3 +175,19 @@ def remove_single_item_from_cart(request, slug):
     else:
         messages.info(request, "You don't have an active order.")
         return redirect('core:order-summary')
+
+
+class SalesListView(ListView):
+    model = Item
+    template_name = 'core/sales.html'
+    paginate_by = 9
+    context_object_name = 'object'
+
+    def get_queryset(self):
+        return Item.objects.filter(discount_price > 0)
+
+    def get_context_data(self, *args, object_list=None, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        return context
+
