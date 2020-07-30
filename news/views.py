@@ -6,7 +6,7 @@ from .models import News, Rubric
 class NewsView(ListView):
     model = News
     template_name = 'news/news_summary.html'
-    paginate_by = 9
+    paginate_by = 2
 
 
 class NewsDetailView(DetailView):

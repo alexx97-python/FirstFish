@@ -23,5 +23,5 @@ urlpatterns = [
     path('checkout/', CheckoutView.as_view(), name='checkout'),
     path('payment/<payment-option>/', PaymentView.as_view(), name='payment'),
     path('sales/', SalesListView.as_view(), name='sales'),
-    path('faq/', FaqView.as_view(), name='questions')
+    path('faq/', FaqView.as_view(), name='questions'),
 ]
