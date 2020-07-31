@@ -61,6 +61,19 @@ class HomeView(ListView):
     paginate_by = 6  # the number of items shown on the homepage
     template_name = 'core/home-page.html'
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data()
+        return context
+
+
+def get_items_by_rubric(request, category):
+    object_list = Item.objects.filter(category=category)
+    #TODO: solve the problem of getting tid of all categories on template
+    context = {
+        'object_list': object_list,
+    }
+    return render(request, 'core/home-page.html', context=context)
+
 
 class OrderSummaryView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
@@ -78,13 +91,6 @@ class OrderSummaryView(LoginRequiredMixin, View):
 class ItemDetailView(DetailView):
     model = Item
     template_name = 'core/product-page.html'
-
-
-def item_list(request):
-    context = {
-        'items': Item.objects.all()
-    }
-    return render(request, 'core/item_list.html', context)
 
 
 def product_page(request):

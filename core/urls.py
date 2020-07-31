@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import item_list, \
-    ItemDetailView, \
+from .views import ItemDetailView, \
     add_to_cart, \
     remove_from_cart, \
     OrderSummaryView, \
@@ -8,13 +7,13 @@ from .views import item_list, \
     CheckoutView, \
     PaymentView, \
     SalesListView, \
-    FaqView
+    FaqView, \
+    get_items_by_rubric
 
 
 app_name = 'core'
 
 urlpatterns = [
-    path('item-list/', item_list, name='item-list'),
     path('product/<slug>', ItemDetailView.as_view(), name='product'),
     path('add-to-cart/<slug>', add_to_cart, name='add-to-cart'),
     path('remove-from-cart/<slug>', remove_from_cart, name='remove-from-cart'),
@@ -24,4 +23,5 @@ urlpatterns = [
     path('payment/<payment-option>/', PaymentView.as_view(), name='payment'),
     path('sales/', SalesListView.as_view(), name='sales'),
     path('faq/', FaqView.as_view(), name='questions'),
+    path('<str:category>', get_items_by_rubric, name='items-by-category')
 ]

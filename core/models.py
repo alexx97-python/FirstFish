@@ -44,6 +44,11 @@ class Item(models.Model):
             'slug': self.slug
         })
 
+    def get_by_category_url(self):
+        return reverse('core:items-by-category', kwargs={
+            'category': self.category
+        })
+
 
 class OrderItem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
