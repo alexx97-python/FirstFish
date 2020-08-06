@@ -6,7 +6,9 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Item, OrderItem, Order, BillingAddress
 from django.views.generic import ListView, DetailView, View, TemplateView
 from django.utils import timezone
-from .forms import CheckoutForm
+from .forms import CheckoutForm, ContactForm
+from django.core.mail import send_mail
+from myshop import settings
 
 
 class CheckoutView(View):
@@ -206,3 +208,23 @@ class FaqView(TemplateView):
     This is a class that will represent a page with FAQ
     """
     template_name = 'core/FAQ.html'
+
+
+class ContactView(View):
+
+    def get(self, *args, **kwargs):
+        form = ContactForm()
+        context = {
+            'form': form
+        }
+        return render(self.request, 'core/contacts.html', context)
+
+    def post(self, *args, **kwargs):
+        form = ContactForm(self.request.POST or None)
+        if form.is_valid():
+            name = form.cleaned_data.get('name')
+            email = form.cleaned_data.get('email')
+            subject = form.cleaned_data.get('subject')
+            comment = form.cleaned_data.get('comment')
+            send_mail(subject, comment, settings.EMAIL_HOST_USER, [email], fail_silently=False)
+        return render(self.request, 'core/home-page.html')

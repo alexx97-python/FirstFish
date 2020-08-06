@@ -48,3 +48,22 @@ class SendMailForm(forms.Form):
     }))
 
 
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=150, widget=forms.TextInput(attrs={
+        'placeholder': 'Enter your name',
+        'id': 'name'
+    }))
+    email = forms.EmailField(max_length=150, widget=forms.TextInput(attrs={
+        'placeholder': 'Enter your email',
+        'id': 'email'
+    }))
+    subject = forms.CharField(max_length=150, widget=forms.TextInput(attrs={
+        'id': 'subject'
+    }))
+    comment = forms.CharField(max_length=1000, widget=forms.TextInput(attrs={
+        'placeholder': 'Enter your comment...',
+        'id': 'comment'
+    }))
+
+
+
