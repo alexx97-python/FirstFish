@@ -89,7 +89,7 @@
             <a class="nav-link waves-effect" href="{% url 'core:sales' %}" > Sales </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href= > Payment and delivery </a>
+            <a class="nav-link waves-effect" href="{% url 'core:payment_and_delivery' %}" > Payment and delivery </a>
           </li>
           <li class="nav-item">
             <a class="nav-link waves-effect" href="{% url 'core:contacts' %}"> Contacts </a>
@@ -194,24 +194,29 @@
   <div class="container-fluid text-center text-md-left">
     <div class="row">
       <div class="col-md-6 mt-md-0 mt-3">
-        <h5 class="text-uppercase">Footer Content</h5>
-        <p>Here you can use rows and columns to organize your footer content.</p>
+        <h5 class="text">FirstFish</h5>
+        <p>Our schedule:</p>
+        <p>Monday - Saturday</p>
+        <p>From 8 a.m. to 6 p.m.</p>
+        <p>You can phone us: </p>
+        <p>+380993563938</p>
+
       </div>
       <hr class="clearfix w-100 d-md-none pb-3">
       <div class="col-md-3 mb-md-0 mb-3">
-        <h5 class="text-uppercase">Links</h5>
+        <h5 class="text-uppercase">Information</h5>
         <ul class="list-unstyled">
           <li>
-            <a href="#!">Link 1</a>
+            <a href="{% url 'all_newses' %}">News</a>
           </li>
           <li>
-            <a href="#!">Link 2</a>
+            <a href="{% url 'core:sales' %}">Sales</a>
           </li>
           <li>
-            <a href="#!">Link 3</a>
+            <a href="{% url 'core:payment_and_delivery' %}">Payment and Delivery</a>
           </li>
           <li>
-            <a href="#!">Link 4</a>
+            <a href="{% url 'core:contacts' %}">Contacts</a>
           </li>
         </ul>
       </div>

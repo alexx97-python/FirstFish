@@ -15,20 +15,14 @@
           <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
             <div class="text-center white-text mx-5 wow fadeIn">
               <h1 class="mb-4">
-                <strong>Learn Bootstrap 4 with MDB</strong>
+                <strong> FirstFish online store of fishing equipment </strong>
               </h1>
-              <p>
-                <strong>Best & free guide of responsive web design</strong>
-              </p>
+              <h3>
+                <strong> We guarantee best prices and quality of our goods </strong>
+              </h3>
               <p class="mb-4 d-none d-md-block">
-                <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                  written versions
-                  available. Create your own, stunning website.</strong>
+                <strong>It is our duty to make sure that you get the best products for reasonable price</strong>
               </p>
-              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                free tutorial
-                <i class="fas fa-graduation-cap ml-2"></i>
-              </a>
             </div>
           </div>
         </div>
@@ -39,20 +33,20 @@
           <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
             <div class="text-center white-text mx-5 wow fadeIn">
               <h1 class="mb-4">
-                <strong>Learn Bootstrap 4 with MDB</strong>
+                <strong>Catch your your fish with our online store FirstFish</strong>
               </h1>
-              <p>
-                <strong>Best & free guide of responsive web design</strong>
+              <h3>
+                <strong> Our specialist will guide you on your path of choosing perfect equipment </strong>
+              </h3>
+              <p class="mb-4 d-none d-md-block">
+                <strong>We can offer you professional guideline if you just make first steps toward
+                becoming professional fisher or even if you already are.
+                </strong>
               </p>
               <p class="mb-4 d-none d-md-block">
-                <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                  written versions
-                  available. Create your own, stunning website.</strong>
+                <strong> All our specialists have more than 10 years experience.
+                </strong>
               </p>
-              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                free tutorial
-                <i class="fas fa-graduation-cap ml-2"></i>
-              </a>
             </div>
           </div>
         </div>
@@ -63,20 +57,14 @@
           <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
             <div class="text-center white-text mx-5 wow fadeIn">
               <h1 class="mb-4">
-                <strong>Learn Bootstrap 4 with MDB</strong>
+                <strong>Use special propositions from FirstFish online store</strong>
               </h1>
-              <p>
-                <strong>Best & free guide of responsive web design</strong>
-              </p>
+              <h3>
+                <strong>We have goods on sales every day</strong>
+              </h3>
               <p class="mb-4 d-none d-md-block">
-                <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                  written versions
-                  available. Create your own, stunning website.</strong>
+                <strong>Don't lose your chance to get the desired equipment for almost nothing </strong>
               </p>
-              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                free tutorial
-                <i class="fas fa-graduation-cap ml-2"></i>
-              </a>
             </div>
           </div>
         </div>
@@ -113,7 +101,7 @@
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            {% for item in categories %}
+            {% for item in object_list %}
             <li class="nav-item">
               <a class="nav-link" href="{{ item.get_by_category_url }}">{{ item.get_category_display }}</a>
             </li>

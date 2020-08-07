@@ -70,9 +70,11 @@ class HomeView(ListView):
 
 def get_items_by_rubric(request, category):
     object_list = Item.objects.filter(category=category)
-    #TODO: solve the problem of getting tid of all categories on template
+    categories = Item.objects.order_by().values('category').distinct()
+    #TODO: solve the problem of getting rid of all categories on template
     context = {
         'object_list': object_list,
+        'categories': categories
     }
     return render(request, 'core/home-page.html', context=context)
 
@@ -228,3 +230,9 @@ class ContactView(View):
             comment = form.cleaned_data.get('comment')
             send_mail(subject, comment, settings.EMAIL_HOST_USER, [email], fail_silently=False)
         return render(self.request, 'core/home-page.html')
+
+
+class PaymentDeliveryView(View):
+
+    def get(self, *args, **kwargs):
+        return render(self.request, 'core/payment_delivery_page.html')

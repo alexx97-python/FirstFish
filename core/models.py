@@ -26,6 +26,9 @@ class Item(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='media/items', default='media/news/Camping.jpg')
 
+    class Meta:
+        ordering = ('category', )
+
     def __str__(self):
         return self.title
 

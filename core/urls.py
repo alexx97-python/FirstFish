@@ -9,7 +9,8 @@ from .views import ItemDetailView, \
     SalesListView, \
     FaqView, \
     get_items_by_rubric, \
-    ContactView
+    ContactView, \
+    PaymentDeliveryView
 
 
 app_name = 'core'
@@ -25,6 +26,7 @@ urlpatterns = [
     path('sales/', SalesListView.as_view(), name='sales'),
     path('faq/', FaqView.as_view(), name='questions'),
     path('<str:category>', get_items_by_rubric, name='items-by-category'),
-    path('contacts/', ContactView.as_view(), name='contacts')
+    path('contacts/', ContactView.as_view(), name='contacts'),
+    path('payment_and_delivery/', PaymentDeliveryView.as_view(), name='payment_and_delivery')
 
 ]
