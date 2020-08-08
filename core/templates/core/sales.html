@@ -64,6 +64,7 @@
     </a>
   </div>
 </section>
+{% if object_list %}
 {% for object in object_list %}
     <div class="container my-5 py-5">
         <section class="text-center">
@@ -88,4 +89,7 @@
         </section>
       </div>
 {% endfor %}
+{% else %}
+ There is no products on Sales now
+{% endif %}
 {% endblock %}

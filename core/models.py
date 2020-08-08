@@ -3,11 +3,6 @@ from django.db import models
 from django.shortcuts import reverse
 from django_countries.fields import CountryField
 
-CATEGORY_CHOICES = (
-    ('S', 'Shirt'),
-    ('SW', 'Sport wear'),
-    ('OW', 'Outwear'),
-)
 
 LABEL_CHOICES = (
     ('P', 'primary'),
@@ -15,19 +10,41 @@ LABEL_CHOICES = (
     ('D', 'danger'),
 )
 
+COLOUR_CHOICES = (
+    ('BL', 'Black'),
+    ('BW', 'Brown'),
+    ('Gy', 'Gray'),
+    ('Y', 'Yellow'),
+    ('R', 'Red'),
+    ('O', 'Orange'),
+    ('B', 'Blue'),
+    ('G', 'Grin')
+)
+
+
+class ItemCategory(models.Model):
+    category = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.category
+
 
 class Item(models.Model):
+    '''
+    This is model that represent our item in the shop
+    '''
     title = models.CharField(max_length=100)
     price = models.FloatField()
+    length = models.FloatField(default=0)
+    weight = models.FloatField(default=0)
+    colour = models.CharField(max_length=2, choices=COLOUR_CHOICES, default='BL')
     discount_price = models.FloatField(blank=True, null=True)
-    category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
+    category = models.ForeignKey(ItemCategory,
+                                 on_delete=models.CASCADE, default=None)
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
     description = models.TextField()
     image = models.ImageField(upload_to='media/items', default='media/news/Camping.jpg')
-
-    class Meta:
-        ordering = ('category', )
 
     def __str__(self):
         return self.title
@@ -51,6 +68,12 @@ class Item(models.Model):
         return reverse('core:items-by-category', kwargs={
             'category': self.category
         })
+
+
+class ItemImage(models.Model):
+    item = models.ForeignKey(Item, related_name='images',
+                             on_delete=models.CASCADE, blank=True, null=True)
+    image = models.ImageField(upload_to='media/items', default='media/news/Camping.jpg')
 
 
 class OrderItem(models.Model):

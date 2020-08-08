@@ -3,7 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from .models import Item, OrderItem, Order, BillingAddress
+from .models import Item, OrderItem, Order, BillingAddress, ItemImage
 from django.views.generic import ListView, DetailView, View, TemplateView
 from django.utils import timezone
 from .forms import CheckoutForm, ContactForm
@@ -65,6 +65,7 @@ class HomeView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data()
+        context['images'] = ItemImage.objects.all()
         return context
 
 

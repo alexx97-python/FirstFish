@@ -58,6 +58,7 @@ class ContactForm(forms.Form):
         'id': 'email'
     }))
     subject = forms.CharField(max_length=150, widget=forms.TextInput(attrs={
+        'placeholder': 'Enter your main question',
         'id': 'subject'
     }))
     comment = forms.CharField(max_length=1000, widget=forms.TextInput(attrs={
