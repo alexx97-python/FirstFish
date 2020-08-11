@@ -15,12 +15,13 @@ class ItemAdmin(admin.ModelAdmin):
     fieldsets = (('Items', {
                     'description': 'Add or update information you need in this form',
                     'classes': ('extrapretty', 'wide'),
-                    'fields': ('title', 'price', 'discount_price', 'length', 'weight', 'category', 'slug', 'image', 'colour')}),
+                    'fields': ('title', 'price', 'discount_price', 'length', 'weight', 'category', 'slug', 'image',
+                               'colour')}),
                  ('Additional information', {
                      'classes': ('collapse',),
                      'fields': ('label', 'description'),
             }))
-    list_display = ('title', 'price', 'discount_price', 'length', 'weight', 'colour')
+    list_display = ('title', 'price', 'discount_price', 'category', 'length', 'weight', 'colour')
     empty_value_display = 'unknown'
     inlines = [ItemImageInline, ]
 

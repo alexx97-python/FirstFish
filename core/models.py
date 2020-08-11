@@ -71,7 +71,7 @@ class Item(models.Model):
 
 
 class ItemImage(models.Model):
-    item = models.ForeignKey(Item, related_name='images',
+    item = models.ForeignKey(Item, related_name='item',
                              on_delete=models.CASCADE, blank=True, null=True)
     image = models.ImageField(upload_to='media/items', default='media/news/Camping.jpg')
 

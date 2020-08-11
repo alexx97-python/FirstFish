@@ -9,6 +9,7 @@ from django.utils import timezone
 from .forms import CheckoutForm, ContactForm
 from django.core.mail import send_mail
 from myshop import settings
+from .filters import ItemFilter
 
 
 class CheckoutView(View):
@@ -65,7 +66,12 @@ class HomeView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data()
+        item = Item.objects.all()
+        myfilter = ItemFilter(self.request.GET, queryset=item)
+        items = myfilter.qs
         context['images'] = ItemImage.objects.all()
+        context['filter'] = myfilter
+        context['items'] = items
         return context
 
 
@@ -96,6 +102,11 @@ class OrderSummaryView(LoginRequiredMixin, View):
 class ItemDetailView(DetailView):
     model = Item
     template_name = 'core/product-page.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['images'] = ItemImage.objects.all()
+        return context
 
 
 def product_page(request):
