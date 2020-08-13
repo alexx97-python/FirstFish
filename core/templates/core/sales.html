@@ -70,10 +70,10 @@
         <section class="text-center">
           <div class="row">
             <div class="col-lg-4 col-md-12 mb-4">
-              <a href="" class="waves-effect waves-light"><img
+              <a href="{{ object.get_absolute_url }}" class="waves-effect waves-light"><img
                   src="{{ object.image.url }}" class="img-fluid"
-                  alt=""></a>
-              <p class="mb-1"><a href="" class="font-weight-bold black-text">{{ object.title }}</a></p>
+                  alt="Something happend with this image"></a>
+              <p class="mb-1"><a href="{{ object.get_absolute_url }}" class="font-weight-bold black-text">{{ object.title }}</a></p>
               <p class="mb-1"><small class="mr-1"><s>{{ object.price }}</s></small><strong>{{ object.discount_price }}</strong></p>
               <div class="amber-text fa-xs mb-1">
                 <i class="fas fa-star"></i>
@@ -82,8 +82,12 @@
                 <i class="fas fa-star"></i>
                 <i class="far fa-star"></i>
               </div>
-              <button type="button" class="btn btn-indigo btn-rounded btn-sm px-3">Buy Now</button>
-              <button type="button" class="btn btn-outline-indigo btn-rounded btn-sm px-3 waves-effect">Details</button>
+              <button type="button" class="btn btn-indigo btn-rounded btn-sm px-3">
+                   Buy Now
+              </button>
+              <button type="button" class="btn btn-outline-indigo btn-rounded btn-sm px-3 waves-effect">
+                  <a href="{{ object.get_absolute_url }}">Details </a>
+              </button>
             </div>
           </div>
         </section>
