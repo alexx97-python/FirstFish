@@ -1,4 +1,4 @@
-from .models import Item, OrderItem, Order, BillingAddress, ItemImage, ItemCategory, Payment
+from .models import Item, OrderItem, Order, BillingAddress, ItemImage, ItemCategory, Payment, Coupon
 from django.contrib import admin
 
 # all empty values of the field will be displayed as 'None'
@@ -32,5 +32,6 @@ admin.site.register(OrderItem)
 admin.site.register(BillingAddress)
 admin.site.register(ItemCategory)
 admin.site.register(Payment)
+admin.site.register(Coupon)
 
 # Register your models here.
