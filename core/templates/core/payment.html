@@ -107,6 +107,18 @@ button:hover {
 {% endblock extra_head %}
 
 {% block content %}
+  <div class="mt-5 pt-4">
+  {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+        {% endfor %}
+  {% endif %}
+  </div>
 
   <main class="mt-5 pt-4">
     <div class="container wow fadeIn">
@@ -137,33 +149,20 @@ button:hover {
          <div class="col-md-12 mb-4">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Your cart</span>
-            <span class="badge badge-secondary badge-pill">3</span>
+            <span class="badge badge-secondary badge-pill">{{ order.items.count }}</span>
           </h4>
 
           <ul class="list-group mb-3 z-depth-1">
+            {% for order_item in order.items.all %}
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
-                <h6 class="my-0">Product name</h6>
-                <small class="text-muted">Brief description</small>
+                <h6 class="my-0">{{ order_item.quantity }} x {{order_item.item.title}}</h6>
+                <small class="text-muted">{{order_item.item.title}}</small>
               </div>
-              <span class="text-muted">$12</span>
+              <span class="text-muted">{{ order_item.get_final_price }}</span>
             </li>
 
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Second product</h6>
-                <small class="text-muted">Brief description</small>
-              </div>
-              <span class="text-muted">$8</span>
-            </li>
-
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Third item</h6>
-                <small class="text-muted">Brief description</small>
-              </div>
-              <span class="text-muted">$5</span>
-            </li>
+            {% endfor %}
 
             <li class="list-group-item d-flex justify-content-between bg-light">
               <div class="text-success">
@@ -175,7 +174,7 @@ button:hover {
 
             <li class="list-group-item d-flex justify-content-between">
               <span>Total (USD)</span>
-              <strong>$20</strong>
+              <strong>{{ order.get_total }}</strong>
             </li>
           </ul>
 
